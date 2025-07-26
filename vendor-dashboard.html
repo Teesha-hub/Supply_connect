@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard - SupplyConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-container">
+                    <div class="logo-icon">🍛</div>
+                    <div class="logo-text">
+                        <h2>SupplyConnect</h2>
+                        <span class="logo-tagline">Vendor Portal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <div class="user-info">
+                    <div class="user-avatar">🏪</div>
+                    <span class="user-greeting">Welcome, <span id="userName">Vendor</span>!</span>
+                </div>
+                <button onclick="logout()" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Vendor Dashboard</h1>
+                <p>Browse available products from suppliers</p>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🛒</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="availableProducts">0</div>
+                            <div class="stat-label">Available Products</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="totalSuppliers">0</div>
+                            <div class="stat-label">Active Suppliers</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📍</div>
+                        <div class="stat-info">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Cities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="search-section">
+                    <div class="section-header">
+                        <h2>Search Products</h2>
+                        <p>Find the products you need from trusted suppliers</p>
+                    </div>
+                    <div class="search-form">
+                        <div class="search-input-container">
+                            <input type="text" id="searchInput" placeholder="Search products by name or location..." class="search-input">
+                            <div class="search-icon">🔍</div>
+                        </div>
+                        <button onclick="searchProducts()" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+
+                <div class="products-section">
+        <div class="purchases-section">
+            <div class="section-header">
+                <h2>My Purchases</h2>
+                <p>View your past orders and receipts</p>
+            </div>
+            <div class="purchases-table-container">
+                <table class="products-table" id="purchasesTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Supplier</th>
+                            <th>Total (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="purchasesBody">
+                        <!-- Purchases will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+                    <div class="section-header">
+                        <h2>Available Products</h2>
+                        <p>Fresh products from verified suppliers</p>
+                    </div>
+                    <div class="products-table-container">
+                        <table class="products-table" id="productsTable">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Price (₹)</th>
+                                    <th>Quantity</th>
+                                    <th>Location</th>
+                                    <th>Supplier</th>
+                                    <th>Stock Status</th>
+                                    <th>Order</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsBody">
+                                <!-- Products will be loaded here -->
+                                <!-- Example row for reference:
+                                <tr>
+                                    <td>Tomatoes</td>
+                                    <td>50</td>
+                                    <td>100</td>
+                                    <td>Delhi</td>
+                                    <td>Supplier A</td>
+                                    <td>In Stock</td>
+                                    <td>
+                                        <button class="order-btn" onclick="addToCart(this)" 
+                                            data-product-id="1" 
+                                            data-supplier-id="5"
+                                            data-product-name="Tomatoes"
+                                            data-price="50"
+                                            data-location="Delhi"
+                                            data-supplier-name="Supplier A"
+                                        >Order Now</button>
+                                    </td>
+                                </tr>
+                                -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

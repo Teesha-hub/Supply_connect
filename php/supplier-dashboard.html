@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h1>Supplier Dashboard</h1>
+    <section id="incoming-orders-section">
+        <h2>Incoming Orders</h2>
+        <table id="incoming-orders-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Orders will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+    <script>
+    function loadIncomingOrders() {
+        fetch('get-purchases.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const table = document.getElementById('incoming-orders-table').querySelector('tbody');
+                    table.innerHTML = '';
+                    data.purchases.forEach(order => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${order.product_name}</td>
+                            <td>${order.quantity}</td>
+                            <td>${order.order_date}</td>
+                            <td>${order.status}</td>
+                        `;
+                        table.appendChild(row);
+                    });
+                } else {
+                    alert('Failed to load orders');
+                }
+            });
+    }
+    document.addEventListener('DOMContentLoaded', loadIncomingOrders);
+    </script>
+</body>
+</html>
